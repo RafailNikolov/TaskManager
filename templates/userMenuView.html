@@ -1,0 +1,17 @@
+<div class="container">
+    <button class="btn btn-primary" id="btnLogIn">LogIn</button>
+    <button class="btn btn-primary" id="btnRegister">Register</button>
+
+
+    <script>
+        $('#btnLogIn').on('click', loadLoggedInView);
+        $('#btnRegister').on('click', loadRegisterView);
+        function loadLoggedInView(){
+            //$('#views').load('templates/home.html');
+            $('#userMenu').load('templates/loggedin.html');
+        }
+        function loadRegisterView(){
+            $('#userMenu').load('templates/register.html');
+        }
+    </script>
+</div>

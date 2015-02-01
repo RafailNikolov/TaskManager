@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Task Manager</title>
+
+    <link rel="stylesheet" href="styles/bootstrap.min.css">
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+
+        <div class="navbar navbar-default navbar-static-top">
+
+            <div class="container">
+
+                <a href="#" class="navbar-brand">TASK MANAGER</a>
+
+                <button class="navbar-toggle" data-toggle="collapse" data-target=".navHeaderCollapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+                <div class="collapse navbar-collapse navHeaderCollapse">
+
+                    <ul class="nav navbar-nav navbar-right">
+
+                        <li><a id="btnHome" href="#">Home</a></li>
+                        <li><a id="btnTasks" href="#">Tasks</a></li>
+                        <li><a id="btnAbout" href="#">About</a></li>
+                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Contact
+                            <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a id="btnInfo" href="#">Info</a></li>
+                                <li><a href="https://github.com/RafailNikolov">GitHub</a></li>
+                            </ul>
+                        </li>
+
+                    </ul>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+        <div class="container" id="userMenu">
+
+        </div>
+
+        <div class="container" id="views">
+
+        </div>
+
+
+        <div class="navbar navbar-default navbar-fixed-bottom">
+            <div class="container">
+                <p class="navbar-text navbar-right">Created by R.Nikolov</p>
+            </div>
+        </div>
+
+
+<script src="scripts/libs/jquery-2.1.1.js"></script>
+<script src="scripts/libs/bootstrap.js"></script>
+<script src="scripts/views.js"></script>
+<script src="scripts/app.js"></script>
+<script src="scripts/ajaxRequester.js"></script>
+<script src="scripts/userSession.js"></script>
+</body>
+</html>
