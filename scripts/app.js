@@ -1,8 +1,8 @@
-'use strict'
+'use strict';
 $(document).ready(function(){
 
-    $('.datepicker').datepicker({
-        startDate: '-3d'
+    $(function() {
+        $( "#datepicker" ).datepicker();
     });
 
     eventHandler();
