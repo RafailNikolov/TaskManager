@@ -32,6 +32,7 @@ $(document).ready(function () {
         userSession.login(data);
         alert('Succsess!!!!!!');
         $('#userMenu').load('templates/logOut.html');
+        $('#views').load('templates/tasks.html');
     }
     function registerError(){
         showErrorMsg("Register failed.");

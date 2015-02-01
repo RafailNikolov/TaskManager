@@ -1,4 +1,7 @@
-<h1>Welcome user</h1>
+<h1>Welcome<span id="currentUser"></span></h1>
 <button class="btn btn-primary" id="btnLogOut">Log Out</button>
-
-    <script src="scripts/logOut.js"></script>
+<script>
+    var currentUser = userSession.getCurrentUser();
+    $('#currentUser').text(' ' + currentUser.username);
+</script>
+<script src="scripts/logOut.js"></script>

@@ -36,36 +36,36 @@ var ajaxRequester = (function(){
         return headersWithToken;
     }
 
-    function getBookmarks(sessionToken, success, error){
+    function getTasks(sessionToken, success, error){
         var headersWithToken = getHeadersWithSessionToken(sessionToken);
         jQuery.ajax({
             method: "GET",
             headers: headersWithToken,
-            url: baseUrl + "classes/Bookmark",
+            url: baseUrl + "classes/Tasks",
             success: success,
             error: error
         });
     }
 
-    function createBookmark(title, url, userId, success, error){
-        var bookmark = {title: title, url: url, ACL : {}};
-        bookmark.ACL[userId] = {"write" : true, "read" : true};
+    function createTasks(taskName, dateTarget, isDone, isUrgent, userId, success, error){
+        var tasks = {taskName: taskName, dateTarget: dateTarget, isDone: isDone, isUrgent: isUrgent, ACL : {}};
+        tasks.ACL[userId] = {"write" : true, "read" : true};
         jQuery.ajax({
             method: "POST",
             headers: headers,
-            url: baseUrl + "classes/Bookmark",
-            data: JSON.stringify(bookmark),
+            url: baseUrl + "classes/Tasks",
+            data: JSON.stringify(tasks),
             success: success,
             error: error
         });
     }
 
-    function deleteBookmark(sessionToken, bookmarkId, success, error){
+    function deleteTasks(sessionToken, tasksId, success, error){
         var headersWithToken = getHeadersWithSessionToken(sessionToken);
         jQuery.ajax({
             method: "DELETE",
             headers: headersWithToken,
-            url: baseUrl + "classes/Bookmark/" + bookmarkId,
+            url: baseUrl + "classes/Tasks/" + tasksId,
             success: success,
             error: error
         });
@@ -74,8 +74,8 @@ var ajaxRequester = (function(){
     return {
         login: login,
         register: register,
-        getBookmarks: getBookmarks,
-        createBookmark: createBookmark,
-        deleteBookmark: deleteBookmark
+        getTasks: getTasks,
+        createTasks: createTasks,
+        deleteTasks: deleteTasks
     };
 })();

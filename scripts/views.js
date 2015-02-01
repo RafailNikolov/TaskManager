@@ -13,14 +13,13 @@ var views = $(document).ready(function () {
         $('#btnInfo').on('click', loadInfoView);
     }
 
-
+    var currentUser = userSession.getCurrentUser();
 //--------------VIEWS-----------------------
 
     function loadInfoView(){
         $('#views').load('templates/info.html');
     }
     function loadHomeView(){
-        var currentUser = userSession.getCurrentUser();
         if(currentUser){
             $('#views').load('templates/home.html');
             $('#userMenu').load('templates/logOut.html');
@@ -30,9 +29,14 @@ var views = $(document).ready(function () {
         }
     }
     function loadTasksView(){
-        $('#views').load('templates/tasks.html');
+        if(currentUser) {
+            $('#views').load('templates/tasks.html');
+        }else{
+            $('#views').load('templates/noUserTasks.html');
+        }
     }
     function loadAboutView(){
         $('#views').load('templates/about.html');
     }
+
 });
