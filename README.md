@@ -1,3 +1,4 @@
 TaskManager
 
-taskmanager-8.apphb.com
+http://taskmanager-8.apphb.com
+
