@@ -8,11 +8,6 @@ $(document).ready(function (){
         $("#btnLogin").click(loginClicked);
     }
 
-
-
-
-
-
     function loginClicked(){
         var username = $("#txtLoginUsername").val();
         var password = $("#txtLoginPassword").val();
