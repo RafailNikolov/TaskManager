@@ -5,6 +5,10 @@ $(document).ready(function(){
         $( "#datepicker" ).datepicker();
     });
 
+    $('.navbar-collapse').click('li', function() {
+        $('.navbar-collapse').collapse('hide');
+    });
+
     eventHandler();
 
     function eventHandler(){
