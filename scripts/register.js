@@ -6,6 +6,11 @@ $(document).ready(function () {
 
     function eventHandler() {
         $("#btnRegister").click(registerClicked);
+        $("#btnLogIn").click(loginClicked);
+    }
+
+    function loginClicked(){
+        $('#userMenu').load('templates/loggedin.html');
     }
 
     function registerClicked() {

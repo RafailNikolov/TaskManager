@@ -18,7 +18,12 @@ var views = $(document).ready(function () {
 
     function loadInfoView(){
         $('#views').load('templates/info.html');
+        var currentUser = userSession.getCurrentUser();
+        if(!currentUser) {
+            $('#userMenu').load('templates/userMenuView.html');
+        }
     }
+
     function loadHomeView(){
         var currentUser = userSession.getCurrentUser();
         if(currentUser){
@@ -29,16 +34,23 @@ var views = $(document).ready(function () {
             $('#userMenu').load('templates/userMenuView.html');
         }
     }
+
     function loadTasksView(){
         var currentUser = userSession.getCurrentUser();
         if(currentUser) {
             $('#views').load('templates/tasks.html');
         }else{
             $('#views').load('templates/noUserTasks.html');
+            $('#userMenu').load('templates/userMenuView.html');
         }
     }
+
     function loadAboutView(){
         $('#views').load('templates/about.html');
+        var currentUser = userSession.getCurrentUser();
+        if(!currentUser) {
+            $('#userMenu').load('templates/userMenuView.html');
+        }
     }
 
 });
