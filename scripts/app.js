@@ -32,20 +32,45 @@ $(document).ready(function(){
         var dateTarget = $('#datepicker').val();
         var isDone = 'Not Done!';
         var isUrgent = $('#taskType').val();
-        var currentUser = userSession.getCurrentUser();
-        ajaxRequester.createTasks(taskName, dateTarget, isDone, isUrgent, currentUser.objectId,
-        taskCreated, taskNotCreated);
+        if(taskName === ''){
+            taskNotCreated();
+        }else {
+
+            var currentUser = userSession.getCurrentUser();
+            ajaxRequester.createTasks(taskName, dateTarget, isDone, isUrgent, currentUser.objectId,
+                taskCreated, taskNotCreated);
+        }
     }
 
     function taskCreated(){
         var taskName = $('#taskName').val();
-        alert("New Task Created: "+ "'" + taskName + "'");
+        showInfoMsg("New Task Created: "+ "'" + taskName + "'");
         $('#taskName').val('');
         $('#datepicker').val('');
         $('#taskType').val('');
 
     }
+
     function taskNotCreated(){
-        alert("NOOOOOOOOOO");
+        showErrorMsg("Task Not created");
+    }
+
+
+    function showInfoMsg(msg){
+        noty({
+            text: msg,
+            type: 'success',
+            layout: 'topCenter',
+            timeout: 5000
+        });
+    }
+
+    function showErrorMsg(msg){
+        noty({
+            text: msg,
+            type: 'error',
+            layout: 'topCenter',
+            timeout: 5000
+        });
     }
 });

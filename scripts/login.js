@@ -16,7 +16,7 @@ $(document).ready(function (){
 
     function authSuccess(data) {
         userSession.login(data);
-        alert('Success!!!!!!');
+        showInfoMsg('Success!!!!!!');
         $('#userMenu').load('templates/logOut.html');
         $('#views').load('templates/tasks.html');
     }
@@ -25,8 +25,22 @@ $(document).ready(function (){
         showErrorMsg("Login failed:" + error.responseJSON.error);
     }
 
-    function showErrorMsg(error){
-        alert(error);
+    function showErrorMsg(msg){
+        noty({
+            text: msg,
+            type: 'error',
+            layout: 'topCenter',
+            timeout: 5000
+        });
+    }
+
+    function showInfoMsg(msg){
+        noty({
+            text: msg,
+            type: 'success',
+            layout: 'topCenter',
+            timeout: 5000
+        });
     }
 
 });
