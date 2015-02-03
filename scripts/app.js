@@ -20,7 +20,17 @@ $(document).ready(function(){
 
     function showTaskList(){
         $('#views').load('templates/taskList.html');
+        var currentUser = userSession.getCurrentUser();
+        var sessionToken = currentUser.sessionToken;
+        ajaxRequester.getTasks(sessionToken, loadTasksSuccess, loadTasksError);
+    }
 
+    function loadTasksSuccess(){
+
+    }
+
+    function loadTasksError(){
+        showErrorMsg("Cannot load Tasks.");
     }
 
     function showAddTaskView(){
