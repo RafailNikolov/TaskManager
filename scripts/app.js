@@ -14,6 +14,7 @@ $(document).ready(function(){
     function eventHandler(){
         $('#btnTaskList').on('click', showTaskList);
         $('#btnAddTask').on('click', showAddTaskView);
+        $('#btnAddNewTask').on('click', addTaskClicked);
     }
 
 
@@ -21,7 +22,30 @@ $(document).ready(function(){
         $('#views').load('templates/taskList.html');
 
     }
+
     function showAddTaskView(){
         $('#views').load('templates/addTask.html');
+    }
+
+    function addTaskClicked(){
+        var taskName = $('#taskName').val();
+        var dateTarget = $('#datepicker').val();
+        var isDone = 'Not Done!';
+        var isUrgent = $('#taskType').val();
+        var currentUser = userSession.getCurrentUser();
+        ajaxRequester.createTasks(taskName, dateTarget, isDone, isUrgent, currentUser.objectId,
+        taskCreated, taskNotCreated);
+    }
+
+    function taskCreated(){
+        var taskName = $('#taskName').val();
+        alert("New Task Created: "+ "'" + taskName + "'");
+        $('#taskName').val('');
+        $('#datepicker').val('');
+        $('#taskType').val('');
+
+    }
+    function taskNotCreated(){
+        alert("NOOOOOOOOOO");
     }
 });

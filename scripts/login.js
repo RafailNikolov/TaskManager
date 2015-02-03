@@ -16,7 +16,7 @@ $(document).ready(function (){
 
     function authSuccess(data) {
         userSession.login(data);
-        alert('Succsess!!!!!!');
+        alert('Success!!!!!!');
         $('#userMenu').load('templates/logOut.html');
         $('#views').load('templates/tasks.html');
     }
