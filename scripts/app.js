@@ -36,6 +36,14 @@ $(document).ready(function(){
             $taskName.text(task.taskName);
             $("#taskList ul").append($taskName);
 
+            var $taskDate = $("<div class='dateTarget'>");
+            $taskDate.text(task.dateTarget);
+            $("#taskList ul").append($taskDate);
+
+            var $taskType = $("<div class='isUrgent'>");
+            $taskType.text(task.isUrgent);
+            $("#taskList ul").append($taskType);
+
             $("#taskList ul").append($taskLi);
 
         }
