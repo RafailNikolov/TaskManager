@@ -2,6 +2,7 @@
 $(document).ready(function () {
 
     eventHandler();
+
     var currentUser = userSession.getCurrentUser();
     $('#currentUser').text(' ' + currentUser.username);
 
@@ -16,8 +17,8 @@ $(document).ready(function () {
         $('#userMenu').load('templates/userMenuView.html');
     }
 
-    function viewTasks(){
-        $('#views').load('templates/taskList.html');
+   function viewTasks(){
+        $('#views').load('templates/tasks.html');
     }
 
 });
