@@ -19,14 +19,25 @@ $(document).ready(function(){
 
 
     function showTaskList(){
-        $('#views').load('templates/taskList.html');
         var currentUser = userSession.getCurrentUser();
+        $('#views').load('templates/taskList.html');
         var sessionToken = currentUser.sessionToken;
         ajaxRequester.getTasks(sessionToken, loadTasksSuccess, loadTasksError);
     }
 
-    function loadTasksSuccess(){
+    function loadTasksSuccess(data){
+        for(var i in data.results){
+            var task = data.results[i];
+            var $taskLi = $('<li>');
+            $taskLi.data("task", task);
 
+            var $taskName = $("<div class='taskName'>");
+            $taskName.text(task.taskName);
+            $("#taskList ul").append($taskName);
+
+            $("#taskList ul").append($taskLi);
+
+        }
     }
 
     function loadTasksError(){
