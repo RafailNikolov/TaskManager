@@ -15,6 +15,7 @@ $(document).ready(function(){
         $('#btnTaskList').on('click', showTaskList);
         $('#btnAddTask').on('click', showAddTaskView);
         $('#btnAddNewTask').on('click', addTaskClicked);
+
     }
 
 
