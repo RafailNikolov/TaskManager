@@ -31,20 +31,26 @@ $(document).ready(function(){
             var task = data.results[i];
             var $taskLi = $('<li>');
             $taskLi.data("task", task);
+            $("#taskList ol").append($taskLi);
 
             var $taskName = $("<div class='taskName'>");
-            $taskName.text(task.taskName);
-            $("#taskList ul").append($taskName);
+            $taskName.text("\"" + task.taskName + "\"" + " Target Date:" + task.dateTarget + " Type:" + task.isUrgent);
+            $taskLi.append($taskName);
 
-            var $taskDate = $("<div class='dateTarget'>");
+            /*var $taskDate = $("<div class='dateTarget'>");
             $taskDate.text(task.dateTarget);
-            $("#taskList ul").append($taskDate);
+            $taskLi.append($taskDate);
 
             var $taskType = $("<div class='isUrgent'>");
             $taskType.text(task.isUrgent);
-            $("#taskList ul").append($taskType);
+            $taskLi.append($taskType);*/
 
-            $("#taskList ul").append($taskLi);
+            var $delTask = $("<button class='btn-danger'>");
+            $delTask.text("Delete");
+            $delTask.click(deleteTaskClicked);
+            $taskLi.append($delTask);
+
+
 
         }
     }
@@ -62,7 +68,7 @@ $(document).ready(function(){
         var dateTarget = $('#datepicker').val();
         var isDone = 'Not Done!';
         var isUrgent = $('#taskType').val();
-        if(taskName === ''){
+        if(taskName === '' || dateTarget === ''){
             taskNotCreated();
         }else {
 
@@ -83,6 +89,22 @@ $(document).ready(function(){
 
     function taskNotCreated(){
         showErrorMsg("Task Not created");
+    }
+
+    function deleteTaskClicked(){
+        var task = $(this).parent().data("task");
+        var currentUser = userSession.getCurrentUser();
+        var sessionToken = currentUser.sessionToken;
+        ajaxRequester.deleteTasks(sessionToken, task.objectId, deleteTaskSuccess, taskNotDeleted);
+    }
+
+    function deleteTaskSuccess(){
+        showInfoMsg("Task deleted.");
+        showTaskList();
+    }
+
+    function taskNotDeleted(){
+        showErrorMsg("Task not deleted.");
     }
 
 
